@@ -6,12 +6,21 @@ import java.util.Random;
 
 public class EnesAyanCode implements Player{
 
+    /*
+    The idea of EnesAyanCode is pretty simple.
+    If you notice that opponent took the best field, then
+    calculate frequency of it and based on this probability
+    select either best field or second best field.
+    If opponent did not take in his last move the best field,
+    then take the best field.
+     */
+
     static Random random = new Random();
     private int lastxA, lastxB, lastxC;
     private int opponentGreed, gamesPlayed;
     private ArrayList<Integer> lastValues, lastFields, currentValues, currentFields;
 
-    public void reset(){
+    public void reset(){ // Set default values
         lastxA = 1;
         lastxB = 2;
         lastxC = 3;
@@ -26,7 +35,7 @@ public class EnesAyanCode implements Player{
         lastValues.add(lastxA); lastValues.add(lastxB); lastValues.add(lastxC);
     }
 
-    public int move(int opponentLastMove, int xA, int xB, int xC){
+    public int move(int opponentLastMove, int xA, int xB, int xC){ // Make move as it is described at the top
         this.reset();
         currentValues.add(xA); currentValues.add(xB); currentValues.add(xC);
         sortFields(xA, xB, xC);
@@ -44,7 +53,7 @@ public class EnesAyanCode implements Player{
         }
     }
 
-    public void sortFields(int xA, int xB, int xC){
+    public void sortFields(int xA, int xB, int xC){ // Simple sort of all of the arrays
         lastValues.set(0, lastxA); lastValues.set(1, lastxB); lastValues.set(2, lastxC);
         currentValues.set(0, xA); currentValues.set(1, xB); currentValues.set(2, xC);
         for(int i = 0; i < 3 - 1; i++){
