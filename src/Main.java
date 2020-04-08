@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import com.company.*;
 
 public class Main {
 
@@ -61,8 +62,10 @@ public class Main {
     static void playTournament(ArrayList<Player> players){
         ArrayList<Double> scores = new ArrayList<>();
 
-        for (int i = 0; i < players.size(); i++)
+        for (int i = 0; i < players.size(); i++) {
             scores.add(0.0);
+            players.get(i).reset();
+        }
         for(int k = 0; k < 100; k++){
             for (int i = 0; i < players.size(); i++)
                 scores.set(i, 0.0);
@@ -86,6 +89,8 @@ public class Main {
         for(int i = 0; i < 10; i++) players.add(new AlwaysFirstFieldAgent());
         for(int i = 0; i < 10; i++) players.add(new GreedyAgent());
         for(int i = 0; i < 10; i++) players.add(new RandomAgent());
+        for(int i = 0; i < 10; i++) players.add(new EnesAyanCode());
         playTournament(players);
     }
 }
+
