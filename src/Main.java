@@ -1,9 +1,29 @@
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class Main {
 
     static double funct(int x){
         return ((10 * Math.pow(Math.E, x)) / (1 + Math.pow(Math.E, x)));
+    }
+
+    static void sortPlayers(ArrayList<Player> players, ArrayList<Double> scores){
+        for(int i = 0; i < players.size() - 1; i++){
+            for(int j = 0; j < players.size() - i - 1; j++){
+                if(scores.get(j) < scores.get(j + 1)) {
+                    Collections.swap(players, j, j + 1);
+                    Collections.swap(scores, j, j + 1);
+                }
+            }
+        }
+    }
+
+    static void evolution(ArrayList<Player> players){
+        for(int i = 0; i < 5; i++){
+            players.remove(players.size() - 1);
+            players.add(players.get(0));
+        }
     }
 
     static ArrayList<Double> playGame(Player a, Player b){
@@ -38,12 +58,14 @@ public class Main {
         return scores;
     }
 
-    static ArrayList<Double> playTournament(ArrayList<Player> players){
+    static void playTournament(ArrayList<Player> players){
         ArrayList<Double> scores = new ArrayList<>();
 
         for (int i = 0; i < players.size(); i++)
             scores.add(0.0);
-        for(int k = 0; k < 10; k++){
+        for(int k = 0; k < 100; k++){
+            for (int i = 0; i < players.size(); i++)
+                scores.set(i, 0.0);
             for(int i = 0; i < players.size() - 1; i++){
                 for(int j = i + 1; j < players.size(); j++){
                     ArrayList<Double> gameResult = playGame(players.get(i), players.get(j));
@@ -51,20 +73,19 @@ public class Main {
                     scores.set(j, scores.get(j) + gameResult.get(1));
                 }
             }
+            sortPlayers(players, scores);
+            evolution(players);
         }
-        return scores;
+        for(int i = 0; i < players.size(); i++){
+            System.out.println(players.get(i).getClass().getName() + ": " + scores.get(i));
+        }
     }
 
-
     public static void main(String[] args) {
-        Player a = new AlwaysFirstFieldAgent();
-        Player b = new GreedyAgent();
-        Player c = new RandomAgent();
         ArrayList<Player> players = new ArrayList<>();
-        players.add(a); players.add(b); players.add(c);
-        ArrayList<Double> scores = playTournament(players);
-        System.out.println("AlwaysFirstField " + scores.get(0));
-        System.out.println("Greedy " + scores.get(1));
-        System.out.println("Random " + scores.get(2));
+        for(int i = 0; i < 10; i++) players.add(new AlwaysFirstFieldAgent());
+        for(int i = 0; i < 10; i++) players.add(new GreedyAgent());
+        for(int i = 0; i < 10; i++) players.add(new RandomAgent());
+        playTournament(players);
     }
 }
