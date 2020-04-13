@@ -87,7 +87,6 @@ public class Main {
 
     public static void main(String[] args) {
         ArrayList<Player> players = new ArrayList<>(); // Here is a tournament between all players
-        for(int i = 0; i < 10; i++) players.add(new AlwaysFirstFieldAgent());
         for(int i = 0; i < 10; i++) players.add(new GreedyAgent());
         for(int i = 0; i < 10; i++) players.add(new RandomAgent());
         for(int i = 0; i < 10; i++) players.add(new EnesAyanCode());
