@@ -60,7 +60,7 @@ public class Main {
         return scores; // Return final scores
     }
 
-    static void playTournament(ArrayList<Player> players){ // Between given players play tournament NUMBER_OF_TOURNAMENTS times
+    static ArrayList<Player> playTournament(ArrayList<Player> players){ // Between given players play tournament NUMBER_OF_TOURNAMENTS times
         ArrayList<Double> scores = new ArrayList<>();
 
         for (int i = 0; i < players.size(); i++) {
@@ -83,6 +83,7 @@ public class Main {
         for(int i = 0; i < players.size(); i++){
             System.out.println(players.get(i).getClass().getName() + ": " + scores.get(i));
         }
+        return players;
     }
 
     public static void main(String[] args) {
@@ -90,7 +91,7 @@ public class Main {
         for(int i = 0; i < 10; i++) players.add(new GreedyAgent());
         for(int i = 0; i < 10; i++) players.add(new RandomAgent());
         for(int i = 0; i < 10; i++) players.add(new EnesAyanCode());
-        playTournament(players);
+        ArrayList<Player> result = playTournament(players);
     }
 }
 
