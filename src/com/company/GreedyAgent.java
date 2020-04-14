@@ -10,4 +10,8 @@ public class GreedyAgent implements Player{
         else if(max == xB){return 2;}
         else{return 3;}
     }
+
+    public String getEmail(){
+        return "e.ayan@innopolis.ru";
+    }
 }

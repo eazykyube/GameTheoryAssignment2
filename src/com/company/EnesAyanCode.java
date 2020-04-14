@@ -53,6 +53,10 @@ public class EnesAyanCode implements Player{
         }
     }
 
+    public String getEmail(){
+        return "e.ayan@innopolis.ru";
+    }
+
     public void sortFields(int xA, int xB, int xC){ // Simple sort of all of the arrays
         lastValues.set(0, lastxA); lastValues.set(1, lastxB); lastValues.set(2, lastxC);
         currentValues.set(0, xA); currentValues.set(1, xB); currentValues.set(2, xC);

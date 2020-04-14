@@ -11,4 +11,8 @@ public class RandomAgent implements Player {
     public int move(int opponentLastMove, int xA, int xB, int xC){ // Random select of the field
         return random.nextInt(3) + 1;
     }
+
+    public String getEmail(){
+        return "e.ayan@innopolis.ru";
+    }
 }

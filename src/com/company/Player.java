@@ -6,4 +6,5 @@ public interface Player {
 
     int move(int opponentLastMove, int xA, int xB, int xC);
 
+    String getEmail();
 }
