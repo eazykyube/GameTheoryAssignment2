@@ -90,7 +90,7 @@ public class Main {
         ArrayList<Player> players = new ArrayList<>(); // Here is a tournament between all players
         for(int i = 0; i < 10; i++) players.add(new GreedyAgent());
         for(int i = 0; i < 10; i++) players.add(new RandomAgent());
-        for(int i = 0; i < 10; i++) players.add(new EnesAyanCode());
+//        for(int i = 0; i < 10; i++) players.add(new EnesAyanCode());
         ArrayList<Player> result = playTournament(players);
     }
 }
