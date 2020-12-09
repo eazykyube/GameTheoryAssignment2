@@ -1,4 +1,4 @@
-# GameTheoryAssignment2
+# Moose-life
 
 Implementation of an assignment which was done within Game Theory course of Innopolis University.
 
